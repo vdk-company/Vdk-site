@@ -1,31 +1,25 @@
-// main.js
-
 document.addEventListener('DOMContentLoaded', () => {
-  const buttons = document.querySelectorAll('.add-to-cart');
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
 
-  buttons.forEach(button => {
+  addToCartButtons.forEach(button => {
     button.addEventListener('click', () => {
-      const productElem = button.closest('.product');
-      const name = productElem.getAttribute('data-name');
-      const volume = productElem.getAttribute('data-volume');
-      const price = productElem.getAttribute('data-price');
+      const productDiv = button.closest('.product');
+      const name = productDiv.querySelector('h2').innerText;
+      // Для упрощения берем объём 10 литров, можно потом добавить выбор
+      const volume = 10;
 
-      addToCart({ name, volume, price, quantity: 1 });
-      alert(`Товар "${name}" добавлен в корзину!`);
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      const existingItemIndex = cart.findIndex(item => item.name === name && item.volume === volume);
+      if (existingItemIndex !== -1) {
+        cart[existingItemIndex].quantity += 1;
+      } else {
+        cart.push({ name, volume, quantity: 1 });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      alert(`${name} (${volume} л) добавлен в корзину!`);
     });
   });
 });
-
-function addToCart(product) {
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-  // Проверяем, есть ли уже этот товар в корзине
-  const existingIndex = cart.findIndex(item => item.name === product.name && item.volume === product.volume);
-  if (existingIndex !== -1) {
-    cart[existingIndex].quantity += 1;
-  } else {
-    cart.push(product);
-  }
-
-  localStorage.setItem('cart', JSON.stringify(cart));
-}
