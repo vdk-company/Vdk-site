@@ -199,4 +199,124 @@ a:hover {
   color: #00575c;
   text-shadow: 0 0 10px var(--glow-color);
 }
+/* Базовые стили для body и контейнеров */
+body {
+  background-color: #121212;
+  color: #eee;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Меню */
+nav a {
+  color: #bbb;
+  text-decoration: none;
+  padding: 8px 15px;
+  display: inline-block;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  position: relative;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: #00ffd1;
+  background-color: rgba(0, 255, 209, 0.1);
+  border-radius: 6px;
+}
+
+/* Выпадающее меню */
+nav a[href="#products"] {
+  cursor: pointer;
+}
+
+.dropdown {
+  background: #002b2b;
+  border-radius: 8px;
+  padding: 12px 18px;
+  box-shadow: 0 0 10px #00ffd1cc;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  min-width: 160px;
+  z-index: 1000;
+}
+
+nav a[href="#products"]:hover .dropdown {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Пункты выпадающего меню */
+.dropdown a {
+  color: #aaf0e6;
+  display: block;
+  margin: 8px 0;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.dropdown a:hover {
+  color: #00ffd1;
+}
+
+/* Кнопки */
+.button {
+  background-color: #00ffd1;
+  border: none;
+  color: #121212;
+  padding: 10px 22px;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 10px #00ffd1cc;
+  user-select: none;
+}
+
+.button:hover {
+  background-color: #00c2a6;
+  box-shadow: 0 0 20px #00ffd1ff;
+}
+
+/* Карточки товаров */
+.product-card {
+  background-color: #1e1e1e;
+  border-radius: 14px;
+  box-shadow: 0 0 15px #00ffd1aa;
+  padding: 20px;
+  text-align: center;
+  transition: box-shadow 0.4s ease;
+  max-width: 320px;
+  user-select: none;
+}
+
+.product-card:hover {
+  box-shadow: 0 0 30px #00ffd1ff;
+}
+
+/* Заголовки */
+h1, h2, h3 {
+  font-weight: 800;
+  color: #00ffd1;
+  margin-bottom: 15px;
+}
+
+/* Текст */
+p {
+  color: #ccc;
+  line-height: 1.5;
+}
+
+/* Сетка товаров */
+#products > div {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
 
