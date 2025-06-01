@@ -2,52 +2,55 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ВДК — Технические газы</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="styles/main.css" />
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <div class="logo">ВДК</div>
-      <nav class="nav">
-        <ul class="menu">
-          <li class="menu-item dropdown">
-            <a href="#" class="menu-link">Ассортимент</a>
+  <header>
+    <div class="container header-wrapper">
+      <h1 class="logo">ВДК</h1>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#">Главная</a></li>
+          <li class="dropdown">
+            <a href="#">Газы ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="#" data-category="oxygen">Кислород</a></li>
-              <li><a href="#" data-category="nitrogen">Азот</a></li>
-              <li><a href="#" data-category="argon">Аргон</a></li>
-              <li><a href="#" data-category="acetylene">Ацетилен</a></li>
-              <li><a href="#" data-category="propane">Пропан</a></li>
-              <li><a href="#" data-category="carbon-dioxide">Углекислота</a></li>
-              <li><a href="#" data-category="container">Тара</a></li>
+              <li><a href="#azot">Азот</a></li>
+              <li><a href="#argon">Аргон</a></li>
+              <li><a href="#kislorod">Кислород</a></li>
+              <li><a href="#acetylen">Ацетилен</a></li>
+              <li><a href="#propan">Пропан</a></li>
+              <li><a href="#co2">Углекислота</a></li>
             </ul>
           </li>
-          <li><a href="cart.html" class="cart-link">Корзина 🛒 <span id="cart-count">0</span></a></li>
+          <li><a href="cart.html">Корзина (<span id="cart-count">0</span>)</a></li>
         </ul>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <main>
-      <section class="intro">
-        <h1>ВДК — Технические газы с 2016 года</h1>
-        <p>Доставляем по всему Усть-Каменогорску быстро и качественно.</p>
-      </section>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h2>Продажа технических газов в Усть-Каменогорске</h2>
+        <p>С 2016 года поставляем качественные газы и оборудование</p>
+      </div>
+    </section>
 
-      <section class="products-section">
-        <h2 id="category-title">Выберите категорию ассортимента</h2>
-        <div id="products" class="products-grid">
-          <!-- Товары подгружаются сюда -->
-          <p class="empty-message">Пожалуйста, выберите категорию выше, чтобы увидеть товары.</p>
-        </div>
-      </section>
-    </main>
+    <section class="products-section">
+      <div class="container">
+        <h2>Ассортимент</h2>
+        <div id="products-container" class="products-grid"></div>
+      </div>
+    </section>
+  </main>
 
-    <footer>
+  <footer>
+    <div class="container">
       <p>© 2016–2025 ВДК. Все права защищены.</p>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   <script src="js/catalog.js"></script>
 </body>
