@@ -1,68 +1,121 @@
-// main.js — обновлённый и финальный JavaScript для сайта ВДК
+// data/products.js — импортируем товары
+import products from './data/products.js';
 
-// Открытие/закрытие выпадающего меню
-const dropdownToggle = document.querySelector(".dropdown");
-const dropdownMenu = document.querySelector(".dropdown-menu");
+const productsContainer = document.getElementById('products-container');
+const cartCountElem = document.getElementById('cart-count');
 
-if (dropdownToggle && dropdownMenu) {
-  dropdownToggle.addEventListener("mouseover", () => {
-    dropdownMenu.style.display = "block";
-  });
+let cart = JSON.parse(localStorage.getItem('cart')) || {};
 
-  dropdownToggle.addEventListener("mouseleave", () => {
-    dropdownMenu.style.display = "none";
-  });
-}
+// Функция отображения всех товаров на главной
+function displayProducts() {
+  productsContainer.innerHTML = '';
 
-// Добавление товара в корзину
-const addToCartButtons = document.querySelectorAll(".add-to-cart");
+  products.forEach(product => {
+    // Создаем карточку товара
+    const card = document.createElement('div');
+    card.className = 'product-card';
 
-addToCartButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const productCard = button.closest(".product-card");
-    const name = productCard.querySelector(".product-title").innerText;
-    const price = productCard.querySelector(".product-price").innerText;
-    const volume = productCard.querySelector("select")?.value || "";
+    // Картинка товара (связь с именем файла картинки)
+    const img = document.createElement('img');
+    img.src = product.image || 'images/default.png';
+    img.alt = product.name;
+    card.appendChild(img);
 
-    const product = { name, price, volume };
-    addToCart(product);
-  });
-});
+    // Название товара
+    const name = document.createElement('h3');
+    name.textContent = product.name;
+    card.appendChild(name);
 
-function addToCart(product) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push(product);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  alert("Товар добавлен в корзину!");
-}
+    // Описание объёмов с ценами в селекте
+    const volumeSelect = document.createElement('select');
+    volumeSelect.className = 'volume-select';
 
-// Отображение товаров в корзине (на cart.html)
-if (window.location.pathname.includes("cart.html")) {
-  const cartContainer = document.getElementById("cart-items");
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  if (cart.length === 0) {
-    cartContainer.innerHTML = "<p>Корзина пуста</p>";
-  } else {
-    cart.forEach((item, index) => {
-      const itemElement = document.createElement("div");
-      itemElement.classList.add("cart-item");
-      itemElement.innerHTML = `
-        <div>
-          <strong>${item.name}</strong> <br/>
-          Объём: ${item.volume || "не выбран"} <br/>
-          Цена: ${item.price}
-        </div>
-        <button onclick="removeFromCart(${index})">Удалить</button>
-      `;
-      cartContainer.appendChild(itemElement);
+    product.variants.forEach(variant => {
+      const option = document.createElement('option');
+      option.value = variant.volume;
+      option.dataset.price = variant.price;
+      option.textContent = `${variant.volume} - ${variant.price.toLocaleString()} тг.`;
+      volumeSelect.appendChild(option);
     });
-  }
+
+    card.appendChild(volumeSelect);
+
+    // Количество
+    const qtyInput = document.createElement('input');
+    qtyInput.type = 'number';
+    qtyInput.min = 1;
+    qtyInput.value = 1;
+    qtyInput.className = 'qty-input';
+    card.appendChild(qtyInput);
+
+    // Цена товара (считается исходя из выбранного объема и количества)
+    const priceDisplay = document.createElement('div');
+    priceDisplay.className = 'price-display';
+    const initialPrice = product.variants[0].price;
+    priceDisplay.textContent = `Цена: ${initialPrice.toLocaleString()} тг.`;
+    card.appendChild(priceDisplay);
+
+    // Обновляем цену при изменении объема или количества
+    function updatePrice() {
+      const selectedOption = volumeSelect.options[volumeSelect.selectedIndex];
+      const pricePerUnit = Number(selectedOption.dataset.price);
+      const qty = Number(qtyInput.value);
+      const totalPrice = pricePerUnit * qty;
+      priceDisplay.textContent = `Цена: ${totalPrice.toLocaleString()} тг.`;
+    }
+
+    volumeSelect.addEventListener('change', updatePrice);
+    qtyInput.addEventListener('input', () => {
+      if (qtyInput.value < 1) qtyInput.value = 1;
+      updatePrice();
+    });
+
+    // Кнопка "Добавить в корзину"
+    const addButton = document.createElement('button');
+    addButton.textContent = 'Добавить в корзину';
+    addButton.className = 'add-to-cart-btn';
+
+    addButton.addEventListener('click', () => {
+      const selectedOption = volumeSelect.options[volumeSelect.selectedIndex];
+      const variantVolume = selectedOption.value;
+      const pricePerUnit = Number(selectedOption.dataset.price);
+      const qty = Number(qtyInput.value);
+
+      const cartKey = `${product.id}-${variantVolume}`;
+
+      if (cart[cartKey]) {
+        cart[cartKey].quantity += qty;
+      } else {
+        cart[cartKey] = {
+          productId: product.id,
+          name: product.name,
+          volume: variantVolume,
+          price: pricePerUnit,
+          quantity: qty,
+          image: product.image || 'images/default.png'
+        };
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+      alert(`Добавлено ${qty} шт. ${product.name} (${variantVolume}) в корзину`);
+    });
+
+    card.appendChild(addButton);
+
+    productsContainer.appendChild(card);
+  });
 }
 
-function removeFromCart(index) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.splice(index, 1);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  location.reload();
+// Обновление счётчика корзины
+function updateCartCount() {
+  let totalQty = 0;
+  for (const key in cart) {
+    totalQty += cart[key].quantity;
+  }
+  cartCountElem.textContent = totalQty;
 }
+
+// Инициализация
+displayProducts();
+updateCartCount();
