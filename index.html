@@ -1,56 +1,56 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ВДК | Технические газы</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="header">
-    <div class="container">
-      <div class="logo">ВДК</div>
-      <nav class="navbar">
-        <ul>
-          <li class="dropdown">
-            <a href="#">Газы</a>
-            <ul class="dropdown-menu" id="gas-list">
-              <!-- JS вставит названия газов -->
-            </ul>
-          </li>
-          <li><a href="catalog.html">Каталог</a></li>
-          <li><a href="cart.html">Корзина</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ВДК | Продажа технических газов</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="main.js"></script>
+    <script defer src="cart.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="logo">ВДК</div>
+        <nav>
+          <ul class="nav">
+            <li class="dropdown">
+              <a href="#">Ассортимент</a>
+              <ul class="dropdown-menu">
+                <li><a href="#azot">Азот</a></li>
+                <li><a href="#argon">Аргон</a></li>
+                <li><a href="#acetylen">Ацетилен</a></li>
+                <li><a href="#oxygen">Кислород</a></li>
+                <li><a href="#propan">Пропан</a></li>
+                <li><a href="#co2">Углекислота</a></li>
+                <li><a href="#tara">Тара</a></li>
+                <li><a href="#tovary">Другие товары</a></li>
+              </ul>
+            </li>
+            <li><a href="cart.html">Корзина 🛒</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-  <main>
     <section class="hero">
       <div class="container">
-        <h1>Продажа технических газов в Усть-Каменогорске</h1>
-        <p>С 2016 года доставляем по всему городу</p>
-        <a href="catalog.html" class="btn-primary">Перейти в каталог</a>
+        <h1>Технические газы с доставкой по Усть-Каменогорску</h1>
+        <p>С 2016 года — качество, которому доверяют</p>
       </div>
     </section>
 
-    <section class="featured">
+    <section class="products-section container">
+      <h2>Ассортимент товаров</h2>
+      <div id="products" class="products-grid">
+        <!-- Продукты будут добавлены с помощью main.js -->
+      </div>
+    </section>
+
+    <footer class="footer">
       <div class="container">
-        <h2>Популярные товары</h2>
-        <div class="product-grid" id="featured-products">
-          <!-- JS вставит карточки популярных товаров -->
-        </div>
+        <p>© 2025 ВДК. Все права защищены.</p>
       </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <p>© 2025 ВДК. Все права защищены.</p>
-    </div>
-  </footer>
-
-  <script src="productData.js"></script>
-  <script src="main.js"></script>
-</body>
+    </footer>
+  </body>
 </html>
