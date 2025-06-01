@@ -1,68 +1,152 @@
-// main.js — обновлённый и финальный JavaScript для сайта ВДК
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Корзина — ВДК</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <script src="main.js" defer></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #f7f9fb;
+      color: #222;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+    .cart-item .name {
+      font-weight: 600;
+      font-size: 18px;
+    }
+    .cart-item .price {
+      font-size: 16px;
+    }
+    .cart-item .quantity {
+      display: flex;
+      align-items: center;
+    }
+    .cart-item .quantity input {
+      width: 50px;
+      text-align: center;
+      margin: 0 10px;
+      font-size: 16px;
+    }
+    .cart-item button {
+      background: #ff5e5e;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .cart-total {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: right;
+      margin-top: 40px;
+    }
+    .checkout-btn {
+      margin-top: 20px;
+      display: block;
+      width: 100%;
+      background: black;
+      color: white;
+      padding: 16px;
+      font-size: 18px;
+      border-radius: 14px;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .checkout-btn:hover {
+      background: #222;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Ваша корзина</h1>
+    <div id="cart-items"></div>
+    <div class="cart-total" id="cart-total">Общая сумма: 0 тг</div>
+    <a href="#" class="checkout-btn">Оформить заказ</a>
+  </div>
 
-// Открытие/закрытие выпадающего меню
-const dropdownToggle = document.querySelector(".dropdown");
-const dropdownMenu = document.querySelector(".dropdown-menu");
+  <script>
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
 
-if (dropdownToggle && dropdownMenu) {
-  dropdownToggle.addEventListener("mouseover", () => {
-    dropdownMenu.style.display = "block";
-  });
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cartItemsContainer.innerHTML = '';
+      let total = 0;
 
-  dropdownToggle.addEventListener("mouseleave", () => {
-    dropdownMenu.style.display = "none";
-  });
-}
+      cart.forEach((item, index) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
 
-// Добавление товара в корзину
-const addToCartButtons = document.querySelectorAll(".add-to-cart");
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
 
-addToCartButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const productCard = button.closest(".product-card");
-    const name = productCard.querySelector(".product-title").innerText;
-    const price = productCard.querySelector(".product-price").innerText;
-    const volume = productCard.querySelector("select")?.value || "";
+        itemDiv.innerHTML = `
+          <div class="name">${item.name}</div>
+          <div class="quantity">
+            <button onclick="updateQuantity(${index}, -1)">−</button>
+            <input type="number" value="${item.quantity}" min="1" onchange="changeQuantity(${index}, this.value)">
+            <button onclick="updateQuantity(${index}, 1)">+</button>
+          </div>
+          <div class="price">${subtotal.toLocaleString()} тг</div>
+          <button onclick="removeItem(${index})">Удалить</button>
+        `;
 
-    const product = { name, price, volume };
-    addToCart(product);
-  });
-});
+        cartItemsContainer.appendChild(itemDiv);
+      });
 
-function addToCart(product) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push(product);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  alert("Товар добавлен в корзину!");
-}
+      cartTotal.textContent = `Общая сумма: ${total.toLocaleString()} тг`;
+    }
 
-// Отображение товаров в корзине (на cart.html)
-if (window.location.pathname.includes("cart.html")) {
-  const cartContainer = document.getElementById("cart-items");
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    function updateQuantity(index, change) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart[index].quantity += change;
+      if (cart[index].quantity < 1) cart[index].quantity = 1;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCart();
+    }
 
-  if (cart.length === 0) {
-    cartContainer.innerHTML = "<p>Корзина пуста</p>";
-  } else {
-    cart.forEach((item, index) => {
-      const itemElement = document.createElement("div");
-      itemElement.classList.add("cart-item");
-      itemElement.innerHTML = `
-        <div>
-          <strong>${item.name}</strong> <br/>
-          Объём: ${item.volume || "не выбран"} <br/>
-          Цена: ${item.price}
-        </div>
-        <button onclick="removeFromCart(${index})">Удалить</button>
-      `;
-      cartContainer.appendChild(itemElement);
-    });
-  }
-}
+    function changeQuantity(index, value) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const qty = parseInt(value);
+      cart[index].quantity = qty > 0 ? qty : 1;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCart();
+    }
 
-function removeFromCart(index) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.splice(index, 1);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  location.reload();
-}
+    function removeItem(index) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCart();
+    }
+
+    loadCart();
+  </script>
+</body>
+</html>
