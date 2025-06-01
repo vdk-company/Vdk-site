@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+
   <header class="main-header">
     <div class="logo">ВДК ГАЗЫ</div>
     <nav class="navbar">
@@ -14,70 +15,87 @@
         <li class="nav-item dropdown">
           <a href="#">Газы ▾</a>
           <ul class="dropdown-menu">
-            <li><a href="#">Кислород</a></li>
-            <li><a href="#">Азот</a></li>
-            <li><a href="#">Аргон</a></li>
-            <li><a href="#">Ацетилен</a></li>
-            <li><a href="#">Углекислый газ</a></li>
-            <li><a href="#">Смеси газов</a></li>
-            <li><a href="#">Гелий</a></li>
-            <li><a href="#">Пропан</a></li>
-            <li><a href="#">Водород</a></li>
-            <li><a href="#">И другие…</a></li>
+            <li><a href="#kyslorod">Кислород</a></li>
+            <li><a href="#azot">Азот</a></li>
+            <li><a href="#argon">Аргон</a></li>
+            <li><a href="#acetilen">Ацетилен</a></li>
+            <li><a href="#uglekislyj-gaz">Углекислый газ</a></li>
+            <li><a href="#smesi-gazov">Смеси газов</a></li>
+            <li><a href="#gelij">Гелий</a></li>
+            <li><a href="#propan">Пропан</a></li>
+            <li><a href="#vodorod">Водород</a></li>
+            <li><a href="#drugie">И другие…</a></li>
           </ul>
         </li>
-        <li class="nav-item"><a href="#">О компании</a></li>
-        <li class="nav-item"><a href="#">Контакты</a></li>
+        <li class="nav-item"><a href="#about">О компании</a></li>
+        <li class="nav-item"><a href="#contacts">Контакты</a></li>
         <li class="nav-item"><a href="cart.html">Корзина 🛒</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="home-content">
-    <h1>Технические газы с доставкой по Усть-Каменогорску</h1>
-    <p>Компания ВДК работает с 2016 года. Мы доставим вам любой технический газ — быстро, качественно и по цене от производителя.</p>
 
-    <section class="popular-products">
-      <h2>Популярные газы</h2>
-      <div class="product-grid">
-        <div class="product-card">
-          <div class="product-image">[Фото кислорода]</div>
-          <h3>Кислород</h3>
-          <a href="#" class="product-button">Подробнее</a>
-        </div>
-        <div class="product-card">
-          <div class="product-image">[Фото аргона]</div>
-          <h3>Аргон</h3>
-          <a href="#" class="product-button">Подробнее</a>
-        </div>
-        <div class="product-card">
-          <div class="product-image">[Фото ацетилена]</div>
-          <h3>Ацетилен</h3>
-          <a href="#" class="product-button">Подробнее</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" style="margin-top: 60px;">
-      <h2>О компании</h2>
-      <p>Работаем с 2016 года, поставляем технические газы по всему Усть-Каменогорску.</p>
+    <section id="about" class="company-info">
+      <h1>Технические газы с доставкой по Усть-Каменогорску</h1>
+      <p>Компания ВДК работает с 2016 года. Мы доставим вам любой технический газ — быстро, качественно и по цене от производителя.</p>
       <p>Адрес: ГК Энергетик, улица Свинцовая, 1, Стройплощадка ж/м, Усть-Каменогорск</p>
       <p>Телефоны: +7‒777‒350‒44‒55, +7 (7232) 22‒52‒95</p>
     </section>
 
-    <section id="products" style="margin-top: 60px;">
-      <h2>Все газы</h2>
+    <section id="products" class="popular-products">
+      <h2>Популярные газы</h2>
       <div class="product-grid">
-        <!-- Здесь добавь все товары из прайса с фото и кнопками выбора объема -->
-        <!-- Пример карточки -->
-        <div class="product-card" id="azot">
-          <img src="https://example.com/azot-front.jpg" alt="Азот" class="product-image" />
-          <h3>Азот</h3>
-          <button class="product-button">Выбрать объем и купить</button>
+
+        <div class="product-card" id="kyslorod">
+          <div class="product-image">[Фото кислорода]</div>
+          <h3>Кислород</h3>
+          <select class="volume-select">
+            <option value="10">10 литров</option>
+            <option value="40">40 литров</option>
+          </select>
+          <input type="number" min="1" value="1" class="quantity-input" />
+          <button class="product-button">Добавить в корзину</button>
         </div>
-        <!-- Добавь остальные карточки -->
+
+        <div class="product-card" id="azot">
+          <div class="product-image">[Фото азота]</div>
+          <h3>Азот</h3>
+          <select class="volume-select">
+            <option value="10">10 литров</option>
+            <option value="40">40 литров</option>
+          </select>
+          <input type="number" min="1" value="1" class="quantity-input" />
+          <button class="product-button">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card" id="argon">
+          <div class="product-image">[Фото аргона]</div>
+          <h3>Аргон</h3>
+          <select class="volume-select">
+            <option value="10">10 литров</option>
+            <option value="40">40 литров</option>
+          </select>
+          <input type="number" min="1" value="1" class="quantity-input" />
+          <button class="product-button">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card" id="acetilen">
+          <div class="product-image">[Фото ацетилена]</div>
+          <h3>Ацетилен</h3>
+          <select class="volume-select">
+            <option value="10">10 литров</option>
+            <option value="40">40 литров</option>
+          </select>
+          <input type="number" min="1" value="1" class="quantity-input" />
+          <button class="product-button">Добавить в корзину</button>
+        </div>
+
+        <!-- Добавь остальные газы по тому же шаблону -->
+
       </div>
     </section>
+
   </main>
 
   <footer class="site-footer">
@@ -85,22 +103,23 @@
   </footer>
 
   <script>
-    // Пример простого скрипта для показа/скрытия меню "Газы"
-    const gasesMenu = document.querySelector('.nav-item.dropdown > a');
-    const dropdown = document.querySelector('.dropdown-menu');
-    
-    gasesMenu.addEventListener('mouseenter', () => {
-      dropdown.style.display = 'block';
+    // Показ/скрытие выпадающего меню "Газы"
+    const dropdownToggle = document.querySelector('.nav-item.dropdown > a');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    dropdownToggle.addEventListener('mouseenter', () => {
+      dropdownMenu.style.display = 'block';
     });
-    gasesMenu.addEventListener('mouseleave', () => {
-      dropdown.style.display = 'none';
+    dropdownToggle.addEventListener('mouseleave', () => {
+      dropdownMenu.style.display = 'none';
     });
-    dropdown.addEventListener('mouseenter', () => {
-      dropdown.style.display = 'block';
+    dropdownMenu.addEventListener('mouseenter', () => {
+      dropdownMenu.style.display = 'block';
     });
-    dropdown.addEventListener('mouseleave', () => {
-      dropdown.style.display = 'none';
+    dropdownMenu.addEventListener('mouseleave', () => {
+      dropdownMenu.style.display = 'none';
     });
   </script>
+
 </body>
 </html>
