@@ -2,56 +2,44 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ВДК — Технические газы</title>
-  <link rel="stylesheet" href="styles/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ВДК — Технические газы и оборудование</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <div class="container header-wrapper">
-      <h1 class="logo">ВДК</h1>
-      <nav class="main-nav">
-        <ul>
-          <li><a href="#">Главная</a></li>
-          <li class="dropdown">
-            <a href="#">Газы ▾</a>
-            <ul class="dropdown-menu">
-              <li><a href="#azot">Азот</a></li>
-              <li><a href="#argon">Аргон</a></li>
-              <li><a href="#kislorod">Кислород</a></li>
-              <li><a href="#acetylen">Ацетилен</a></li>
-              <li><a href="#propan">Пропан</a></li>
-              <li><a href="#co2">Углекислота</a></li>
-            </ul>
+    <div class="container header-container">
+      <div class="logo">ВДК</div>
+      <nav>
+        <ul class="main-menu">
+          <li class="menu-item dropdown">
+            <a href="#" class="dropbtn">Ассортимент товаров</a>
+            <div class="dropdown-content" id="dropdown-products">
+              <!-- Категории и товары подгрузятся динамически -->
+            </div>
           </li>
-          <li><a href="cart.html">Корзина (<span id="cart-count">0</span>)</a></li>
+          <li><a href="cart.html">Корзина 🛒</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container">
-        <h2>Продажа технических газов в Усть-Каменогорске</h2>
-        <p>С 2016 года поставляем качественные газы и оборудование</p>
-      </div>
-    </section>
-
-    <section class="products-section">
-      <div class="container">
-        <h2>Ассортимент</h2>
-        <div id="products-container" class="products-grid"></div>
+    <section class="products-section container">
+      <h1>Популярные газы и товары</h1>
+      <div id="products-list" class="products-grid">
+        <!-- Товары загружаются динамически -->
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <p>© 2016–2025 ВДК. Все права защищены.</p>
+    <div class="container footer-container">
+      <p>© 2016-2025 ВДК. Доставка по всему Усть-Каменогорску.</p>
     </div>
   </footer>
 
-  <script src="js/catalog.js"></script>
+  <script src="data/products.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
