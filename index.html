@@ -6,7 +6,7 @@
   <title>ВДК - Технические газы Усть-Каменогорск</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<<body>
+<body>
   <header class="main-header">
     <div class="logo">ВДК ГАЗЫ</div>
     <nav class="navbar">
@@ -40,7 +40,6 @@
     <section class="popular-products">
       <h2>Популярные газы</h2>
       <div class="product-grid">
-        <!-- Здесь будут карточки товаров -->
         <div class="product-card">
           <div class="product-image">[Фото кислорода]</div>
           <h3>Кислород</h3>
@@ -58,89 +57,50 @@
         </div>
       </div>
     </section>
+
+    <section id="about" style="margin-top: 60px;">
+      <h2>О компании</h2>
+      <p>Работаем с 2016 года, поставляем технические газы по всему Усть-Каменогорску.</p>
+      <p>Адрес: ГК Энергетик, улица Свинцовая, 1, Стройплощадка ж/м, Усть-Каменогорск</p>
+      <p>Телефоны: +7‒777‒350‒44‒55, +7 (7232) 22‒52‒95</p>
+    </section>
+
+    <section id="products" style="margin-top: 60px;">
+      <h2>Все газы</h2>
+      <div class="product-grid">
+        <!-- Здесь добавь все товары из прайса с фото и кнопками выбора объема -->
+        <!-- Пример карточки -->
+        <div class="product-card" id="azot">
+          <img src="https://example.com/azot-front.jpg" alt="Азот" class="product-image" />
+          <h3>Азот</h3>
+          <button class="product-button">Выбрать объем и купить</button>
+        </div>
+        <!-- Добавь остальные карточки -->
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <p>© 2016–2025 ВДК — Все права защищены</p>
   </footer>
-</body>
->
 
-<header>
-  <div class="container" style="display:flex; align-items:center; justify-content:space-between;">
-    <div class="logo" style="font-weight: 700; font-size: 24px; color: white;">ВДК</div>
-    <nav>
-      <a href="#about">О компании</a>
-      <a href="#products" style="position:relative;">
-        Газы ▼
-        <div class="dropdown" style="position:absolute; top:30px; left:0; background:#00aabb; border-radius:6px; padding:10px; display:none;">
-          <a href="#azot" style="display:block; color:white; margin:5px 0;">Азот</a>
-          <a href="#argon" style="display:block; color:white; margin:5px 0;">Аргон</a>
-          <a href="#acetilen" style="display:block; color:white; margin:5px 0;">Ацетилен</a>
-          <a href="#kyslorod" style="display:block; color:white; margin:5px 0;">Кислород</a>
-          <!-- Добавишь остальные по ссылкам -->
-        </div>
-      </a>
-      <a href="#contacts">Контакты</a>
-      <a href="#cart" class="button">Корзина</a>
-    </nav>
-  </div>
-</header>
-
-<main class="container">
-
-  <section id="about" style="margin-bottom: 60px;">
-    <h1>Компания ВДК</h1>
-    <p>Работаем с 2016 года, поставляем технические газы по всему Усть-Каменогорску.</p>
-    <p>Адрес: ГК Энергетик, улица Свинцовая, 1, Стройплощадка ж/м, Усть-Каменогорск</p>
-    <p>Телефоны: +7‒777‒350‒44‒55, +7 (7232) 22‒52‒95</p>
-  </section>
-
-  <section id="products">
-    <h2>Популярные газы</h2>
-    <div style="display:flex; gap: 30px; flex-wrap: wrap;">
-
-      <div class="product-card" id="azot" style="max-width: 300px;">
-        <img src="https://example.com/azot-front.jpg" alt="Азот" class="product-image" />
-        <h3>Азот</h3>
-        <button class="button">Выбрать объем и купить</button>
-      </div>
-
-      <div class="product-card" id="argon" style="max-width: 300px;">
-        <img src="https://example.com/argon-front.jpg" alt="Аргон" class="product-image" />
-        <h3>Аргон</h3>
-        <button class="button">Выбрать объем и купить</button>
-      </div>
-
-      <div class="product-card" id="acetilen" style="max-width: 300px;">
-        <img src="https://example.com/acetilen-front.jpg" alt="Ацетилен" class="product-image" />
-        <h3>Ацетилен</h3>
-        <button class="button">Выбрать объем и купить</button>
-      </div>
-
-      <div class="product-card" id="kyslorod" style="max-width: 300px;">
-        <img src="https://example.com/kyslorod-front.jpg" alt="Кислород" class="product-image" />
-        <h3>Кислород</h3>
-        <button class="button">Выбрать объем и купить</button>
-      </div>
-
-    </div>
-  </section>
-
-</main>
-
-<script>
-  // простой скрипт для показа/скрытия выпадающего меню Газов
-  const gasesMenu = document.querySelector('nav a[href="#products"]');
-  const dropdown = gasesMenu.querySelector('.dropdown');
-  
-  gasesMenu.addEventListener('mouseenter', () => {
-    dropdown.style.display = 'block';
-  });
-  gasesMenu.addEventListener('mouseleave', () => {
-    dropdown.style.display = 'none';
-  });
-</script>
-
+  <script>
+    // Пример простого скрипта для показа/скрытия меню "Газы"
+    const gasesMenu = document.querySelector('.nav-item.dropdown > a');
+    const dropdown = document.querySelector('.dropdown-menu');
+    
+    gasesMenu.addEventListener('mouseenter', () => {
+      dropdown.style.display = 'block';
+    });
+    gasesMenu.addEventListener('mouseleave', () => {
+      dropdown.style.display = 'none';
+    });
+    dropdown.addEventListener('mouseenter', () => {
+      dropdown.style.display = 'block';
+    });
+    dropdown.addEventListener('mouseleave', () => {
+      dropdown.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
