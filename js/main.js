@@ -1,31 +1,24 @@
-// Показывать/скрывать выпадающее меню при наведении
-document.querySelectorAll(".nav-item").forEach(item => {
-  const submenu = item.querySelector(".submenu");
-  if (submenu) {
-    item.addEventListener("mouseenter", () => {
-      submenu.style.display = "block";
-    });
-    item.addEventListener("mouseleave", () => {
-      submenu.style.display = "none";
-    });
+// ...твой существующий код в main.js
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cartItemsUl = document.getElementById('cart-items');
+  const clearBtn = document.getElementById('clear-cart');
+  const addButtons = document.querySelectorAll('.add-to-cart');
+
+  function addItemToCart(name) {
+    const li = document.createElement('li');
+    li.textContent = name;
+    cartItemsUl.appendChild(li);
   }
-});
 
-// Переход на страницу корзины
-const cartButton = document.querySelector("#go-to-cart");
-if (cartButton) {
-  cartButton.addEventListener("click", () => {
-    window.location.href = "cart.html";
+  addButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const productName = btn.parentElement.querySelector('h2').textContent;
+      addItemToCart(productName);
+    });
   });
-}
 
-// Плавный скролл (если надо)
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
+  clearBtn.addEventListener('click', () => {
+    cartItemsUl.innerHTML = '';
   });
 });
