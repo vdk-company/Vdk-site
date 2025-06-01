@@ -1,65 +1,134 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ВДК — Технические газы</title>
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
-<body>
-  <div class="container">
-    <header>
-      <nav>
-        <ul class="menu">
-          <li><a href="#">Кислород</a></li>
-          <li><a href="#">Азот</a></li>
-          <li><a href="#">Аргон</a></li>
-          <li><a href="#">Ацетилен</a></li>
-          <li><a href="#">Другие газы</a></li>
-        </ul>
-      </nav>
-    </header>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    <main>
-      <h1>Компания ВДК — Технические газы с 2016 года</h1>
-      <p>Доставляем технические газы по всему Усть-Каменогорску быстро и качественно.</p>
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f8f8;
+  color: #222;
+  line-height: 1.5;
+}
 
-      <section class="products">
-        <article class="product-card">
-          <div class="product-image">Фото кислорода</div>
-          <h2>Кислород</h2>
-          <p>Доступен в баллонах 10 и 40 литров.</p>
-          <button class="btn">Выбрать</button>
-        </article>
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-        <article class="product-card">
-          <div class="product-image">Фото азота</div>
-          <h2>Азот</h2>
-          <p>Баллоны 10 и 40 литров, доставка по городу.</p>
-          <button class="btn">Выбрать</button>
-        </article>
+header nav {
+  background: #00bfa5;
+  padding: 10px 0;
+  margin-bottom: 30px;
+  border-radius: 6px;
+}
 
-        <article class="product-card">
-          <div class="product-image">Фото аргона</div>
-          <h2>Аргон</h2>
-          <p>Баллоны 10 и 40 литров, с гарантией качества.</p>
-          <button class="btn">Выбрать</button>
-        </article>
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
 
-        <article class="product-card">
-          <div class="product-image">Фото ацетилена</div>
-          <h2>Ацетилен</h2>
-          <p>Безопасная упаковка, доставка на заказ.</p>
-          <button class="btn">Выбрать</button>
-        </article>
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+}
 
-        <!-- Добавляй остальные газы аналогично -->
-      </section>
-    </main>
+.menu a:hover {
+  text-decoration: underline;
+}
 
-    <footer>
-      <p>© 2016–2025 ВДК. Все права защищены.</p>
-    </footer>
-  </div>
-</body>
-</html>
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #007964;
+}
+
+h2 {
+  margin: 15px 0 10px;
+  color: #004d3a;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.products {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  padding: 15px;
+  width: 220px;
+  text-align: center;
+}
+
+.product-image {
+  background: #d4f0ec;
+  height: 140px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  color: #007964;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.btn {
+  background: #00bfa5;
+  border: none;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background: #008f7a;
+}
+
+.cart-section {
+  margin-top: 40px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+#cart-items {
+  list-style: none;
+  margin-bottom: 15px;
+}
+
+#cart-items li {
+  padding: 8px 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+}
+
+footer {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  padding: 15px 0;
+  border-top: 1px solid #ccc;
+}
