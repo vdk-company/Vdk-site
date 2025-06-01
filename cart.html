@@ -2,151 +2,46 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Корзина — ВДК</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
-  <script src="main.js" defer></script>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background: #f7f9fb;
-      color: #222;
-    }
-    .container {
-      max-width: 1000px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
-    h1 {
-      font-size: 32px;
-      margin-bottom: 30px;
-    }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: white;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      margin-bottom: 20px;
-    }
-    .cart-item .name {
-      font-weight: 600;
-      font-size: 18px;
-    }
-    .cart-item .price {
-      font-size: 16px;
-    }
-    .cart-item .quantity {
-      display: flex;
-      align-items: center;
-    }
-    .cart-item .quantity input {
-      width: 50px;
-      text-align: center;
-      margin: 0 10px;
-      font-size: 16px;
-    }
-    .cart-item button {
-      background: #ff5e5e;
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .cart-total {
-      font-size: 20px;
-      font-weight: bold;
-      text-align: right;
-      margin-top: 40px;
-    }
-    .checkout-btn {
-      margin-top: 20px;
-      display: block;
-      width: 100%;
-      background: black;
-      color: white;
-      padding: 16px;
-      font-size: 18px;
-      border-radius: 14px;
-      text-align: center;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-    .checkout-btn:hover {
-      background: #222;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Корзина — ВДК Технические газы</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">ВДК</a>
+      <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="cart.html" class="active">Корзина</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-content">
     <h1>Ваша корзина</h1>
-    <div id="cart-items"></div>
-    <div class="cart-total" id="cart-total">Общая сумма: 0 тг</div>
-    <a href="#" class="checkout-btn">Оформить заказ</a>
-  </div>
+    <div id="cart-items" class="cart-items"></div>
 
-  <script>
-    const cartItemsContainer = document.getElementById('cart-items');
-    const cartTotal = document.getElementById('cart-total');
+    <div class="cart-total">
+      <strong>Итого: </strong><span id="total-price">0 ₸</span>
+    </div>
 
-    function loadCart() {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cartItemsContainer.innerHTML = '';
-      let total = 0;
+    <form id="order-form" class="order-form">
+      <h2>Оформление заказа</h2>
 
-      cart.forEach((item, index) => {
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'cart-item';
+      <label for="delivery-address">Адрес доставки:</label>
+      <input type="text" id="delivery-address" name="delivery-address" placeholder="Введите адрес доставки" required />
 
-        const subtotal = item.price * item.quantity;
-        total += subtotal;
+      <button type="submit" class="btn btn-primary">Оформить заказ</button>
+    </form>
+  </main>
 
-        itemDiv.innerHTML = `
-          <div class="name">${item.name}</div>
-          <div class="quantity">
-            <button onclick="updateQuantity(${index}, -1)">−</button>
-            <input type="number" value="${item.quantity}" min="1" onchange="changeQuantity(${index}, this.value)">
-            <button onclick="updateQuantity(${index}, 1)">+</button>
-          </div>
-          <div class="price">${subtotal.toLocaleString()} тг</div>
-          <button onclick="removeItem(${index})">Удалить</button>
-        `;
+  <footer class="footer">
+    <div class="container footer-container">
+      <p>© 2025 ВДК — Все права защищены</p>
+    </div>
+  </footer>
 
-        cartItemsContainer.appendChild(itemDiv);
-      });
-
-      cartTotal.textContent = `Общая сумма: ${total.toLocaleString()} тг`;
-    }
-
-    function updateQuantity(index, change) {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart[index].quantity += change;
-      if (cart[index].quantity < 1) cart[index].quantity = 1;
-      localStorage.setItem('cart', JSON.stringify(cart));
-      loadCart();
-    }
-
-    function changeQuantity(index, value) {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const qty = parseInt(value);
-      cart[index].quantity = qty > 0 ? qty : 1;
-      localStorage.setItem('cart', JSON.stringify(cart));
-      loadCart();
-    }
-
-    function removeItem(index) {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.splice(index, 1);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      loadCart();
-    }
-
-    loadCart();
-  </script>
+  <script src="cart.js" type="module"></script>
 </body>
 </html>
