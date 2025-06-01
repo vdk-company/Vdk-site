@@ -1,156 +1,148 @@
-const products = [
+export const products = [
+  // Газы
   {
-    id: "azot-10",
+    id: 1,
     name: "Азот",
-    type: "Газ",
-    variants: [
-      { volume: "10 л", price: 10000 }
-    ],
-    image: "images/azot.jpg"
+    volume: "10 л",
+    price: 4000,
+    image: "images/azot-10.jpg",
+    category: "gas"
   },
   {
-    id: "azot-och",
-    name: "Азот особ. чистоты",
-    type: "Газ",
-    variants: [
-      { volume: "10 л", price: 22000 }
-    ],
-    image: "images/azot-och.jpg"
+    id: 2,
+    name: "Азот",
+    volume: "40 л",
+    price: 14000,
+    image: "images/azot-40.jpg",
+    category: "gas"
   },
   {
-    id: "argon-40",
-    name: "Аргон (40л / 6.3 м3)",
-    type: "Газ",
-    variants: [
-      { volume: "40 л", price: 15000 }
-    ],
-    image: "images/argon-40.jpg"
+    id: 3,
+    name: "Аргон",
+    volume: "10 л",
+    price: 8000,
+    image: "images/argon-10.jpg",
+    category: "gas"
   },
   {
-    id: "argon-och",
-    name: "Аргон особ. чистоты",
-    type: "Газ",
-    variants: [
-      { volume: "40 л", price: 22000 }
-    ],
-    image: "images/argon-och.jpg"
+    id: 4,
+    name: "Аргон",
+    volume: "40 л",
+    price: 28000,
+    image: "images/argon-40.jpg",
+    category: "gas"
   },
   {
-    id: "argon-10",
-    name: "Аргон (10л)",
-    type: "Газ",
-    variants: [
-      { volume: "10 л", price: 6000 }
-    ],
-    image: "images/argon-10.jpg"
-  },
-  {
-    id: "acetylen",
+    id: 5,
     name: "Ацетилен",
-    type: "Газ",
-    variants: [
-      { volume: "40 л", price: 47900 }
-    ],
-    image: "images/acetylen.jpg"
+    volume: "10 л",
+    price: 8500,
+    image: "images/acetilen-10.jpg",
+    category: "gas"
   },
   {
-    id: "oxygen-3000",
+    id: 6,
+    name: "Ацетилен",
+    volume: "40 л",
+    price: 32000,
+    image: "images/acetilen-40.jpg",
+    category: "gas"
+  },
+  {
+    id: 7,
     name: "Кислород",
-    type: "Газ",
-    variants: [
-      { volume: "10 л", price: 3000 },
-      { volume: "40 л", price: 3500 }
-    ],
-    image: "images/oxygen.jpg"
+    volume: "10 л",
+    price: 3000,
+    image: "images/kislorod-10.jpg",
+    category: "gas"
   },
   {
-    id: "co2-40",
-    name: "Углекислота (40 л)",
-    type: "Газ",
-    variants: [
-      { volume: "40 л", price: 25000 }
-    ],
-    image: "images/co2-40.jpg"
+    id: 8,
+    name: "Кислород",
+    volume: "40 л",
+    price: 10000,
+    image: "images/kislorod-40.jpg",
+    category: "gas"
+  },
+  // Товары
+  {
+    id: 9,
+    name: "Баллон 40 л",
+    volume: "пустой",
+    price: 18000,
+    image: "images/ballon-40.jpg",
+    category: "tank"
   },
   {
-    id: "co2-20",
-    name: "Углекислота (20 л)",
-    type: "Газ",
-    variants: [
-      { volume: "20 л", price: 23000 }
-    ],
-    image: "images/co2-20.jpg"
+    id: 10,
+    name: "Баллон 10 л",
+    volume: "пустой",
+    price: 9000,
+    image: "images/ballon-10.jpg",
+    category: "tank"
   },
   {
-    id: "co2-10",
-    name: "Углекислота (10 л)",
-    type: "Газ",
-    variants: [
-      { volume: "10 л", price: 11000 }
-    ],
-    image: "images/co2-10.jpg"
+    id: 11,
+    name: "Редуктор аргоновый",
+    volume: "",
+    price: 5500,
+    image: "images/reduktor-argon.jpg",
+    category: "tank"
   },
   {
-    id: "co2-5",
-    name: "Углекислота (5 л)",
-    type: "Газ",
-    variants: [
-      { volume: "5 л", price: 6000 }
-    ],
-    image: "images/co2-5.jpg"
+    id: 12,
+    name: "Редуктор ацетиленовый",
+    volume: "",
+    price: 5200,
+    image: "images/reduktor-acetilen.jpg",
+    category: "tank"
   },
   {
-    id: "tara-10",
-    name: "Тара (10 л, новый)",
-    type: "Тара",
-    variants: [
-      { volume: "10 л", price: 57700 }
-    ],
-    image: "images/tara-10.jpg"
+    id: 13,
+    name: "Редуктор кислородный",
+    volume: "",
+    price: 4800,
+    image: "images/reduktor-kislorod.jpg",
+    category: "tank"
   },
   {
-    id: "tara-40-recert",
-    name: "Тара (40 л, переаттестованная)",
-    type: "Тара",
-    variants: [
-      { volume: "40 л", price: 62000 }
-    ],
-    image: "images/tara-40.jpg"
+    id: 14,
+    name: "Газовая трубка",
+    volume: "5 м",
+    price: 1500,
+    image: "images/trubka.jpg",
+    category: "tank"
   },
   {
-    id: "tara-40-new",
-    name: "Тара (40 л, новая)",
-    type: "Тара",
-    variants: [
-      { volume: "40 л", price: 107900 }
-    ],
-    image: "images/tara-40-new.jpg"
+    id: 15,
+    name: "Газовая трубка",
+    volume: "10 м",
+    price: 2900,
+    image: "images/trubka-10.jpg",
+    category: "tank"
   },
   {
-    id: "propane-small",
-    name: "Пропан малый (10 кг)",
-    type: "Газ",
-    variants: [
-      { volume: "10 кг", price: 9000 }
-    ],
-    image: "images/propane-small.jpg"
+    id: 16,
+    name: "Вентиль аргоновый",
+    volume: "",
+    price: 3500,
+    image: "images/ventil-argon.jpg",
+    category: "tank"
   },
   {
-    id: "propane-big",
-    name: "Пропан большой (20 кг)",
-    type: "Газ",
-    variants: [
-      { volume: "20 кг", price: 26000 }
-    ],
-    image: "images/propane-big.jpg"
+    id: 17,
+    name: "Вентиль ацетиленовый",
+    volume: "",
+    price: 3300,
+    image: "images/ventil-acetilen.jpg",
+    category: "tank"
   },
   {
-    id: "ventil",
-    name: "Вентиль",
-    type: "Оборудование",
-    variants: [
-      { volume: "-", price: 4000 }
-    ],
-    image: "images/ventil.jpg"
+    id: 18,
+    name: "Вентиль кислородный",
+    volume: "",
+    price: 3100,
+    image: "images/ventil-kislorod.jpg",
+    category: "tank"
   }
 ];
