@@ -1,24 +1,23 @@
-// ...твой существующий код в main.js
+document.addEventListener('DOMContentLoaded', function () {
+  const cartItems = document.getElementById('cart-items');
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+  const clearCartButton = document.getElementById('clear-cart');
 
-document.addEventListener('DOMContentLoaded', () => {
-  const cartItemsUl = document.getElementById('cart-items');
-  const clearBtn = document.getElementById('clear-cart');
-  const addButtons = document.querySelectorAll('.add-to-cart');
+  // Добавление товара в корзину
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', function () {
+      const product = this.closest('.product');
+      const productName = product.querySelector('h2').textContent;
+      const productVolume = product.querySelector('p').textContent;
 
-  function addItemToCart(name) {
-    const li = document.createElement('li');
-    li.textContent = name;
-    cartItemsUl.appendChild(li);
-  }
-
-  addButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const productName = btn.parentElement.querySelector('h2').textContent;
-      addItemToCart(productName);
+      const listItem = document.createElement('li');
+      listItem.textContent = `${productName} — ${productVolume}`;
+      cartItems.appendChild(listItem);
     });
   });
 
-  clearBtn.addEventListener('click', () => {
-    cartItemsUl.innerHTML = '';
+  // Очистка корзины
+  clearCartButton.addEventListener('click', function () {
+    cartItems.innerHTML = '';
   });
 });
