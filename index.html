@@ -1,179 +1,256 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VDK Company — Продажа газов и баллонов</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f8f9fa;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ВДК — Газовые решения</title>
+<style>
+  /* Сброс и базовые стили */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0b111f;
+    color: #eee;
+    line-height: 1.5;
+  }
+  a {
+    color: #4dd0e1;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  a:hover {
+    color: #82e9de;
+  }
+
+  header {
+    background: #101820;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  header .logo {
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    color: #4dd0e1;
+    cursor: pointer;
+  }
+
+  nav a {
+    margin-left: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  nav a.button {
+    background: #4dd0e1;
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: #0b111f;
+    font-weight: 700;
+    transition: background 0.3s;
+  }
+  nav a.button:hover {
+    background: #35c4d7;
+  }
+
+  /* Баннер */
+  .banner {
+    height: 80vh;
+    background: linear-gradient(135deg, #072b4f, #0b111f);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 10vw;
+    color: #4dd0e1;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .banner h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 3px;
+    animation: slideInDown 1s ease forwards;
+    opacity: 0;
+  }
+
+  .banner p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+    animation: fadeIn 1.5s ease forwards;
+    opacity: 0;
+  }
+
+  .banner button {
+    background: #4dd0e1;
+    color: #0b111f;
+    border: none;
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(77,208,225,0.6);
+    transition: transform 0.2s, box-shadow 0.3s;
+    animation: fadeIn 2s ease forwards;
+    opacity: 0;
+  }
+  .banner button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(77,208,225,0.8);
+  }
+  .banner button:active {
+    transform: scale(0.95);
+  }
+
+  @keyframes slideInDown {
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
+    from {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+  }
+  @keyframes fadeIn {
+    to {opacity:1;}
+    from {opacity:0;}
+  }
+
+  /* Услуги */
+  .services {
+    padding: 80px 10vw;
+    background: #101820;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .service-card {
+    background: #14233c;
+    border-radius: 15px;
+    padding: 30px 20px;
+    flex: 1 1 280px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 14px 24px rgba(77,208,225,0.7);
+  }
+  .service-card h3 {
+    margin-bottom: 12px;
+    color: #4dd0e1;
+  }
+  .service-card p {
+    color: #ccc;
+    font-size: 1rem;
+  }
+
+  /* О компании */
+  .about {
+    padding: 80px 10vw;
+    background: #0b111f;
+    color: #bbb;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .about h2 {
+    color: #4dd0e1;
+    margin-bottom: 24px;
+    font-size: 2.6rem;
+  }
+  .about p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+  }
+
+  /* Контакты */
+  footer {
+    background: #101820;
+    padding: 40px 10vw;
+    color: #666;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  footer a {
+    color: #4dd0e1;
+  }
+
+  /* Адаптив */
+  @media (max-width: 800px) {
     header {
-      background-color: #0d6efd;
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-    nav {
-      background-color: #fff;
-      border-bottom: 1px solid #ccc;
+      flex-direction: column;
+      gap: 15px;
     }
     nav a {
-      margin-right: 15px;
-      color: #000;
-      font-weight: 500;
+      margin-left: 0;
+      margin-right: 20px;
     }
-    .hero {
-      background: url('https://cdn.pixabay.com/photo/2020/03/22/14/49/gas-cylinder-4955194_1280.jpg') no-repeat center center;
-      background-size: cover;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 2rem;
-      text-shadow: 1px 1px 5px #000;
+    .services {
+      flex-direction: column;
+      gap: 30px;
     }
-    .section-title {
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    .product-card img {
-      height: 200px;
-      object-fit: cover;
-    }
-    .map-embed {
-      width: 100%;
-      height: 300px;
-      border: none;
-    }
-    footer {
-      background: #212529;
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>VDK Company</h1>
-    <p>Продажа технических и бытовых газов, баллонов, доставка</p>
-  </header>
 
-  <nav class="container py-2">
-    <a href="#products">Товары</a>
-    <a href="#payment">Оплата</a>
-    <a href="#map">Адрес</a>
-    <a href="#form">Заказать</a>
-    <a href="#faq">FAQ</a>
+<header>
+  <div class="logo">ВДК</div>
+  <nav>
+    <a href="#services">Услуги</a>
+    <a href="#about">О компании</a>
+    <a href="#contacts" class="button">Связаться</a>
   </nav>
+</header>
 
-  <div class="hero">
-    Ваш поставщик газов №1 в Усть-Каменогорске
+<section class="banner">
+  <h1>ВДК — Газовые решения<br>для вашего бизнеса</h1>
+  <p>Надежные поставки газа и современное оборудование для промышленности и дома.</p>
+  <button onclick="document.location='#contacts'">Связаться с нами</button>
+</section>
+
+<section id="services" class="services">
+  <div class="service-card">
+    <h3>Поставка газа</h3>
+    <p>Гарантируем своевременную поставку природного газа для вашего предприятия.</p>
   </div>
+  <div class="service-card">
+    <h3>Оборудование</h3>
+    <p>Современное газовое оборудование с высокими стандартами безопасности и эффективности.</p>
+  </div>
+  <div class="service-card">
+    <h3>Сервис и поддержка</h3>
+    <p>Профессиональное техническое обслуживание и консультации для клиентов.</p>
+  </div>
+</section>
 
-  <section class="container" id="products">
-    <h2 class="section-title">Наши товары</h2>
-    <div class="row">
-      <div class="col-md-4 mb-4">
-        <div class="card product-card">
-          <img src="https://cdn.pixabay.com/photo/2020/03/22/14/49/gas-cylinder-4955194_1280.jpg" class="card-img-top" alt="Газовый баллон">
-          <div class="card-body">
-            <h5 class="card-title">Пропан 50л</h5>
-            <p class="card-text">Идеально для промышленного и бытового использования. Высокое качество.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card product-card">
-          <img src="https://cdn.pixabay.com/photo/2017/03/09/20/32/gas-2125652_1280.jpg" class="card-img-top" alt="Кислород">
-          <div class="card-body">
-            <h5 class="card-title">Кислород 40л</h5>
-            <p class="card-text">Чистый медицинский и технический кислород. Сертифицированный.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card product-card">
-          <img src="https://cdn.pixabay.com/photo/2021/02/16/07/44/gas-cylinder-6020457_1280.jpg" class="card-img-top" alt="Баллоны">
-          <div class="card-body">
-            <h5 class="card-title">Пустые баллоны</h5>
-            <p class="card-text">Продажа и обмен пустых баллонов различных объемов. Проверка и заправка.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="about" class="about">
+  <h2>О компании ВДК</h2>
+  <p>Компания ВДК занимается поставкой и обслуживанием газового оборудования, обеспечивая надежность и качество услуг с 2005 года. Наши специалисты всегда готовы помочь вам с подбором оптимальных решений.</p>
+</section>
 
-  <section class="container" id="payment">
-    <h2 class="section-title">Как оплатить</h2>
-    <ul>
-      <li>Kaspi перевод</li>
-      <li>Оплата через Halyk Bank</li>
-      <li>Наличные при получении</li>
-      <li>По реквизитам</li>
-    </ul>
-  </section>
+<footer id="contacts">
+  <p>Контакты: <a href="tel:+77001234567">+7 (700) 123-45-67</a> | Email: <a href="mailto:info@vdk16.kz">info@vdk16.kz</a></p>
+  <p>Адрес: г. Усть-Каменогорск, Казахстан</p>
+  <p>© 2025 ВДК</p>
+</footer>
 
-  <section class="container" id="form">
-    <h2 class="section-title">Заказать товар</h2>
-    <form>
-      <div class="mb-3">
-        <label class="form-label">Ваше имя</label>
-        <input type="text" class="form-control" required>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Номер телефона</label>
-        <input type="tel" class="form-control" required>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Что хотите заказать</label>
-        <textarea class="form-control" rows="3" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Отправить</button>
-    </form>
-  </section>
-
-  <section class="container" id="map">
-    <h2 class="section-title">Где мы находимся</h2>
-    <iframe class="map-embed" src="https://2gis.kz/ust-kamenogorsk/geo/70000001025886763"></iframe>
-  </section>
-
-  <section class="container" id="faq">
-    <h2 class="section-title">Часто задаваемые вопросы</h2>
-    <div class="accordion" id="faqAccordion">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true">
-            Есть ли доставка?
-          </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show">
-          <div class="accordion-body">Да, доставка осуществляется по городу Усть-Каменогорск и области.</div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-            Какой график работы?
-          </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse">
-          <div class="accordion-body">Пн-Сб: с 9:00 до 18:00. Вс: выходной.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 VDK Company — Все права защищены</p>
-    <p>Усть-Каменогорск, Казахстан</p>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
