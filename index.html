@@ -1,11 +1,172 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Vdk Company</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ВДК - Газовые баллоны</title>
+  <style>
+    /* Минималистичный современный стиль */
+    body {
+      margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f8fa; color: #222;
+    }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 30px; background: #004080; color: white;
+    }
+    .logo {
+      font-weight: 700; font-size: 24px; letter-spacing: 3px;
+      cursor: default;
+    }
+    nav a {
+      color: white; text-decoration: none; margin-left: 25px;
+      font-weight: 600;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .hero {
+      padding: 80px 30px; text-align: center; background: #0070c0;
+      color: white;
+    }
+    .hero h1 {
+      font-size: 36px; margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 20px; margin-bottom: 30px;
+    }
+    .btn-primary {
+      background: #ffd700; color: #004080;
+      padding: 15px 35px;
+      font-size: 18px;
+      font-weight: 700;
+      border: none; border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: #ffbf00;
+    }
+    .products {
+      max-width: 1000px; margin: 60px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 25px;
+      padding: 0 20px;
+    }
+    .product-card {
+      background: white; border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+      padding: 15px;
+      text-align: center;
+    }
+    .product-card img {
+      width: 100%; height: 180px; object-fit: contain;
+      margin-bottom: 15px;
+    }
+    .product-card h3 {
+      margin: 0 0 10px 0;
+      font-size: 22px;
+      color: #004080;
+    }
+    .product-card p {
+      font-size: 18px; color: #222;
+      margin-bottom: 15px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #004080;
+      color: white;
+      margin-top: 80px;
+      font-size: 14px;
+    }
+    .contacts {
+      max-width: 800px; margin: 0 auto 60px auto; padding: 0 20px;
+      text-align: center;
+    }
+    .contacts h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #004080;
+    }
+    .contacts p {
+      font-size: 18px;
+      margin: 5px 0;
+    }
+    iframe {
+      border: 0;
+      border-radius: 10px;
+      margin-top: 15px;
+      width: 100%;
+      height: 350px;
+    }
+    @media(max-width: 600px) {
+      header {
+        flex-direction: column;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
+      }
+      .hero h1 {
+        font-size: 28px;
+      }
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Привет от VDK!</h1>
-  <p>Это твой первый сайт на GitHub Pages!</p>
+
+<header>
+  <div class="logo">ВДК</div>
+  <nav>
+    <a href="#products">Товары</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Качественные газовые баллоны</h1>
+  <p>Надежность, гарантия и быстрая доставка по Алматы</p>
+  <button class="btn-primary" onclick="location.href='#products'">Смотреть товары</button>
+</section>
+
+<section id="products" class="products">
+  <div class="product-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/3103/3103446.png" alt="Газовый баллон 5 л">
+    <h3>Газовый баллон 5 л</h3>
+    <p>7 000 ₸</p>
+    <button class="btn-primary">Купить</button>
+  </div>
+  <div class="product-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/3103/3103446.png" alt="Газовый баллон 10 л">
+    <h3>Газовый баллон 10 л</h3>
+    <p>12 000 ₸</p>
+    <button class="btn-primary">Купить</button>
+  </div>
+  <div class="product-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/2591/2591129.png" alt="Редуктор для баллона">
+    <h3>Редуктор для баллона</h3>
+    <p>3 500 ₸</p>
+    <button class="btn-primary">Купить</button>
+  </div>
+</section>
+
+<section id="contacts" class="contacts">
+  <h2>Контакты</h2>
+  <p>Телефон: +7 XXX XXX XX XX</p>
+  <p>Адрес: г. Алматы, ул. Примерная 16</p>
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11640.246909933887!2d76.9453935!3d43.2389499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x388368e73e7efea3%3A0x85905b317e3ebc3f!2z0JDQsNC70LDRgNC40LrQuCwg0JrQsNGA0LDRgtCw0L3QtSAxNiwg0JrQsNGA0LDRgtCw0L3QtSwg0J7QvdC40LUg0JrQsNC60L7Qs9C-LCDQmtC40YLQtdGA0LDRjyDQotC-0LvRjNC90LDRjywgMTAwMDA!5e0!3m2!1sru!2skz!4v1685629202720!5m2!1sru!2skz" 
+    allowfullscreen="" loading="lazy"></iframe>
+</section>
+
+<footer>
+  &copy; 2025 ВДК. Все права защищены.
+</footer>
+
 </body>
 </html>
