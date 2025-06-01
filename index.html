@@ -2,167 +2,87 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ВДК — Технические газы</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f5f7fa;
-      color: #333;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1em 2em;
-      background: #0c1e2c;
-      color: white;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    nav a {
-      color: white;
-      margin: 0 1em;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .hero {
-      height: 60vh;
-      background: url('https://images.unsplash.com/photo-1633356122300-841c77d7b73e') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-    }
-    .hero h1 {
-      font-size: 3em;
-    }
-    .section {
-      padding: 4em 2em;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2em;
-    }
-    .product {
-      background: white;
-      border-radius: 1em;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      transition: 0.3s;
-      display: flex;
-      flex-direction: column;
-    }
-    .product:hover {
-      transform: translateY(-5px);
-    }
-    .product img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .product h3 {
-      margin: 1em;
-    }
-    .product p {
-      margin: 0 1em 1em;
-    }
-    .product .btn {
-      background: #0c1e2c;
-      color: white;
-      padding: 0.5em;
-      margin: 0 1em 1em;
-      border: none;
-      border-radius: 0.5em;
-      cursor: pointer;
-    }
-    footer {
-      background: #0c1e2c;
-      color: white;
-      text-align: center;
-      padding: 2em;
-    }
-    .contact {
-      margin-top: 1em;
-    }
-    .map-link {
-      color: #00bcd4;
-      text-decoration: underline;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ВДК - Технические газы Усть-Каменогорск</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <header>
-    <div><strong>ВДК</strong> — Технические газы</div>
+
+<header>
+  <div class="container" style="display:flex; align-items:center; justify-content:space-between;">
+    <div class="logo" style="font-weight: 700; font-size: 24px; color: white;">ВДК</div>
     <nav>
       <a href="#about">О компании</a>
-      <a href="#products">Газы</a>
-      <a href="#contact">Контакты</a>
-      <a href="#map">Мы на карте</a>
+      <a href="#products" style="position:relative;">
+        Газы ▼
+        <div class="dropdown" style="position:absolute; top:30px; left:0; background:#00aabb; border-radius:6px; padding:10px; display:none;">
+          <a href="#azot" style="display:block; color:white; margin:5px 0;">Азот</a>
+          <a href="#argon" style="display:block; color:white; margin:5px 0;">Аргон</a>
+          <a href="#acetilen" style="display:block; color:white; margin:5px 0;">Ацетилен</a>
+          <a href="#kyslorod" style="display:block; color:white; margin:5px 0;">Кислород</a>
+          <!-- Добавишь остальные по ссылкам -->
+        </div>
+      </a>
+      <a href="#contacts">Контакты</a>
+      <a href="#cart" class="button">Корзина</a>
     </nav>
-  </header>
-  <section class="hero" data-aos="fade-in">
-    <h1>Продажа и доставка технических газов в Усть-Каменогорске</h1>
+  </div>
+</header>
+
+<main class="container">
+
+  <section id="about" style="margin-bottom: 60px;">
+    <h1>Компания ВДК</h1>
+    <p>Работаем с 2016 года, поставляем технические газы по всему Усть-Каменогорску.</p>
+    <p>Адрес: ГК Энергетик, улица Свинцовая, 1, Стройплощадка ж/м, Усть-Каменогорск</p>
+    <p>Телефоны: +7‒777‒350‒44‒55, +7 (7232) 22‒52‒95</p>
   </section>
-  <section id="about" class="section" data-aos="fade-up">
-    <h2>О компании</h2>
-    <p>Компания ВДК успешно работает с 2016 года, предлагая широкий ассортимент технических газов, а также пустых баллонов и оборудования. Мы осуществляем доставку по всему Усть-Каменогорску и гарантируем высокое качество обслуживания.</p>
-  </section>
-  <section id="products" class="section" data-aos="fade-up">
-    <h2>Каталог газов</h2>
-    <div class="products">
-      <div class="product">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Liquid_nitrogen_in_a_flask.jpg/640px-Liquid_nitrogen_in_a_flask.jpg" alt="Азот" />
+
+  <section id="products">
+    <h2>Популярные газы</h2>
+    <div style="display:flex; gap: 30px; flex-wrap: wrap;">
+
+      <div class="product-card" id="azot" style="max-width: 300px;">
+        <img src="https://example.com/azot-front.jpg" alt="Азот" class="product-image" />
         <h3>Азот</h3>
-        <p>Обычный – 10 000 тг.<br>Особо чистый – 22 000 тг.</p>
-        <button class="btn">В корзину</button>
+        <button class="button">Выбрать объем и купить</button>
       </div>
-      <div class="product">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Argon_discharge_tube.jpg/640px-Argon_discharge_tube.jpg" alt="Аргон" />
+
+      <div class="product-card" id="argon" style="max-width: 300px;">
+        <img src="https://example.com/argon-front.jpg" alt="Аргон" class="product-image" />
         <h3>Аргон</h3>
-        <p>40л – 15 000 тг.<br>ОЧ – 22 000 тг.<br>10л – 6 000 тг.</p>
-        <button class="btn">В корзину</button>
+        <button class="button">Выбрать объем и купить</button>
       </div>
-      <div class="product">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Ethyne-3D-vdW.png/640px-Ethyne-3D-vdW.png" alt="Ацетилен" />
+
+      <div class="product-card" id="acetilen" style="max-width: 300px;">
+        <img src="https://example.com/acetilen-front.jpg" alt="Ацетилен" class="product-image" />
         <h3>Ацетилен</h3>
-        <p>47 900 тг.</p>
-        <button class="btn">В корзину</button>
+        <button class="button">Выбрать объем и купить</button>
       </div>
-      <div class="product">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Oxygen_discharge_tube.jpg/640px-Oxygen_discharge_tube.jpg" alt="Кислород" />
+
+      <div class="product-card" id="kyslorod" style="max-width: 300px;">
+        <img src="https://example.com/kyslorod-front.jpg" alt="Кислород" class="product-image" />
         <h3>Кислород</h3>
-        <p>3000 / 3500 тг.</p>
-        <button class="btn">В корзину</button>
+        <button class="button">Выбрать объем и купить</button>
       </div>
+
     </div>
   </section>
-  <section id="contact" class="section" data-aos="fade-up">
-    <h2>Контакты</h2>
-    <div class="contact">
-      <p>Телефон: +7‒777‒350‒44‒55, +7 (7232) 22‒52‒95</p>
-      <p>Адрес: ГК Энергетик, Улица Свинцовая, 1, Усть-Каменогорск, 070002</p>
-    </div>
-  </section>
-  <section id="map" class="section" data-aos="fade-up">
-    <h2>Мы на карте</h2>
-    <p><a class="map-link" href="https://2gis.kz/ust-kamenogorsk/firm/70000001025886763/tab/photos" target="_blank">Открыть в 2ГИС</a></p>
-  </section>
-  <footer>
-    <p>&copy; 2016–2025 ВДК. Все права защищены.</p>
-  </footer>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
+
+</main>
+
+<script>
+  // простой скрипт для показа/скрытия выпадающего меню Газов
+  const gasesMenu = document.querySelector('nav a[href="#products"]');
+  const dropdown = gasesMenu.querySelector('.dropdown');
+  
+  gasesMenu.addEventListener('mouseenter', () => {
+    dropdown.style.display = 'block';
+  });
+  gasesMenu.addEventListener('mouseleave', () => {
+    dropdown.style.display = 'none';
+  });
+</script>
+
 </body>
 </html>
