@@ -1,80 +1,65 @@
-/* Общие стили */
-body {
-  background-color: #121212;
-  color: #e0e0e0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ВДК — Технические газы</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav>
+        <ul class="menu">
+          <li><a href="#">Кислород</a></li>
+          <li><a href="#">Азот</a></li>
+          <li><a href="#">Аргон</a></li>
+          <li><a href="#">Ацетилен</a></li>
+          <li><a href="#">Другие газы</a></li>
+        </ul>
+      </nav>
+    </header>
 
-/* Заголовки */
-h1, h2, h3 {
-  font-weight: 700;
-  color: #00ffd1;
-  text-shadow: 0 0 10px rgba(0, 255, 209, 0.5);
-}
+    <main>
+      <h1>Компания ВДК — Технические газы с 2016 года</h1>
+      <p>Доставляем технические газы по всему Усть-Каменогорску быстро и качественно.</p>
 
-/* Ссылки и навигация */
-a {
-  color: #00ffd1;
-  text-decoration: none;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
+      <section class="products">
+        <article class="product-card">
+          <div class="product-image">Фото кислорода</div>
+          <h2>Кислород</h2>
+          <p>Доступен в баллонах 10 и 40 литров.</p>
+          <button class="btn">Выбрать</button>
+        </article>
 
-a:hover {
-  color: #ffffff;
-  text-shadow: 0 0 15px rgba(0, 255, 209, 0.8);
-}
+        <article class="product-card">
+          <div class="product-image">Фото азота</div>
+          <h2>Азот</h2>
+          <p>Баллоны 10 и 40 литров, доставка по городу.</p>
+          <button class="btn">Выбрать</button>
+        </article>
 
-/* Кнопки */
-.button {
-  background-color: #00ffd1;
-  border: none;
-  color: #121212;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 255, 209, 0.5);
-}
+        <article class="product-card">
+          <div class="product-image">Фото аргона</div>
+          <h2>Аргон</h2>
+          <p>Баллоны 10 и 40 литров, с гарантией качества.</p>
+          <button class="btn">Выбрать</button>
+        </article>
 
-.button:hover {
-  background-color: #00c2a6;
-  box-shadow: 0 0 20px rgba(0, 255, 209, 0.8);
-}
+        <article class="product-card">
+          <div class="product-image">Фото ацетилена</div>
+          <h2>Ацетилен</h2>
+          <p>Безопасная упаковка, доставка на заказ.</p>
+          <button class="btn">Выбрать</button>
+        </article>
 
-/* Карточки товаров */
-.product-card {
-  background-color: #1e1e1e;
-  border-radius: 14px;
-  box-shadow: 0 0 15px rgba(0, 255, 209, 0.5);
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 320px;
-  margin: 10px;
-}
+        <!-- Добавляй остальные газы аналогично -->
+      </section>
+    </main>
 
-.product-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 25px rgba(0, 255, 209, 0.8);
-}
-
-.product-image {
-  background-color: #333;
-  height: 200px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-}
-
-/* Сетка товаров */
-.product-grid {
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
-}
+    <footer>
+      <p>© 2016–2025 ВДК. Все права защищены.</p>
+    </footer>
+  </div>
+</body>
+</html>
