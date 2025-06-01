@@ -8,59 +8,47 @@
 </head>
 <body>
   <div class="container">
-    <header>
-      <nav>
+    <header class="header">
+      <div class="logo">ВДК</div>
+      <nav class="nav">
         <ul class="menu">
-          <li><a href="#">Кислород</a></li>
-          <li><a href="#">Азот</a></li>
-          <li><a href="#">Аргон</a></li>
-          <li><a href="#">Ацетилен</a></li>
-          <li><a href="#">Другие газы</a></li>
-          <li><a href="cart.html">Корзина</a></li>
+          <li class="menu-item dropdown">
+            <a href="#" class="menu-link">Ассортимент</a>
+            <ul class="dropdown-menu">
+              <li><a href="#" data-category="oxygen">Кислород</a></li>
+              <li><a href="#" data-category="nitrogen">Азот</a></li>
+              <li><a href="#" data-category="argon">Аргон</a></li>
+              <li><a href="#" data-category="acetylene">Ацетилен</a></li>
+              <li><a href="#" data-category="propane">Пропан</a></li>
+              <li><a href="#" data-category="carbon-dioxide">Углекислота</a></li>
+              <li><a href="#" data-category="container">Тара</a></li>
+            </ul>
+          </li>
+          <li><a href="cart.html" class="cart-link">Корзина 🛒 <span id="cart-count">0</span></a></li>
         </ul>
       </nav>
     </header>
 
     <main>
-      <h1>ВДК — Технические газы с 2016 года</h1>
-      <p>Доставляем по всему Усть-Каменогорску быстро и качественно.</p>
+      <section class="intro">
+        <h1>ВДК — Технические газы с 2016 года</h1>
+        <p>Доставляем по всему Усть-Каменогорску быстро и качественно.</p>
+      </section>
 
-      <section class="products">
-        <div class="product">
-          <div class="product-image">Кислород фото</div>
-          <h2>Кислород</h2>
-          <p>Баллоны 10 и 40 литров</p>
-          <button class="btn add-to-cart">В корзину</button>
-        </div>
-
-        <div class="product">
-          <div class="product-image">Азот фото</div>
-          <h2>Азот</h2>
-          <p>Баллоны 10 и 40 литров</p>
-          <button class="btn add-to-cart">В корзину</button>
-        </div>
-
-        <div class="product">
-          <div class="product-image">Аргон фото</div>
-          <h2>Аргон</h2>
-          <p>Баллоны 10 и 40 литров</p>
-          <button class="btn add-to-cart">В корзину</button>
-        </div>
-
-        <div class="product">
-          <div class="product-image">Ацетилен фото</div>
-          <h2>Ацетилен</h2>
-          <p>Баллоны 10 и 40 литров</p>
-          <button class="btn add-to-cart">В корзину</button>
+      <section class="products-section">
+        <h2 id="category-title">Выберите категорию ассортимента</h2>
+        <div id="products" class="products-grid">
+          <!-- Товары подгружаются сюда -->
+          <p class="empty-message">Пожалуйста, выберите категорию выше, чтобы увидеть товары.</p>
         </div>
       </section>
     </main>
 
     <footer>
-      <p>© 2016 ВДК. Все права защищены.</p>
+      <p>© 2016–2025 ВДК. Все права защищены.</p>
     </footer>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="js/catalog.js"></script>
 </body>
 </html>
