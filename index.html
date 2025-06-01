@@ -21,39 +21,43 @@
     </header>
 
     <main>
-      <h1>Компания ВДК — Технические газы с 2016 года</h1>
-      <p>Доставляем технические газы по всему Усть-Каменогорску быстро и качественно.</p>
+      <h1>ВДК — Технические газы с 2016 года</h1>
+      <p>Доставляем по всему Усть-Каменогорску быстро и качественно.</p>
 
       <section class="products">
-        <article class="product-card">
-          <div class="product-image">Фото кислорода</div>
+        <div class="product">
+          <div class="product-image">Кислород фото</div>
           <h2>Кислород</h2>
-          <p>Доступен в баллонах 10 и 40 литров.</p>
-          <button class="btn">Выбрать</button>
-        </article>
+          <p>Баллоны 10 и 40 литров</p>
+          <button class="btn add-to-cart">В корзину</button>
+        </div>
 
-        <article class="product-card">
-          <div class="product-image">Фото азота</div>
+        <div class="product">
+          <div class="product-image">Азот фото</div>
           <h2>Азот</h2>
-          <p>Баллоны 10 и 40 литров, доставка по городу.</p>
-          <button class="btn">Выбрать</button>
-        </article>
+          <p>Баллоны 10 и 40 литров</p>
+          <button class="btn add-to-cart">В корзину</button>
+        </div>
 
-        <article class="product-card">
-          <div class="product-image">Фото аргона</div>
+        <div class="product">
+          <div class="product-image">Аргон фото</div>
           <h2>Аргон</h2>
-          <p>Баллоны 10 и 40 литров, с гарантией качества.</p>
-          <button class="btn">Выбрать</button>
-        </article>
+          <p>Баллоны 10 и 40 литров</p>
+          <button class="btn add-to-cart">В корзину</button>
+        </div>
 
-        <article class="product-card">
-          <div class="product-image">Фото ацетилена</div>
+        <div class="product">
+          <div class="product-image">Ацетилен фото</div>
           <h2>Ацетилен</h2>
-          <p>Безопасная упаковка, доставка на заказ.</p>
-          <button class="btn">Выбрать</button>
-        </article>
+          <p>Баллоны 10 и 40 литров</p>
+          <button class="btn add-to-cart">В корзину</button>
+        </div>
+      </section>
 
-        <!-- Добавляй остальные газы аналогично -->
+      <section class="cart-section">
+        <h2>Корзина</h2>
+        <ul id="cart-items"></ul>
+        <button id="clear-cart" class="btn">Очистить корзину</button>
       </section>
     </main>
 
@@ -61,5 +65,7 @@
       <p>© 2016–2025 ВДК. Все права защищены.</p>
     </footer>
   </div>
+
+  <script src="js/cart.js"></script>
 </body>
 </html>
